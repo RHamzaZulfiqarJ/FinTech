@@ -16,24 +16,6 @@ FinTech is a high-performance dashboard designed to simulate a modern institutio
 * **Audit-Grade Integrity:** Full traceability with old-to-new field-level history.
 * **Intelligence Layer:** Automated anomaly detection and spending pattern analysis.
 
-# 🚀 AI-Powered Real-Time Financial Ledger
-
-A **production-grade, full-stack financial transaction system** built with modern technologies, real-time architecture, and an intelligence layer powered by AI-driven insights and anomaly detection.
-
----
-
-## 🌟 Overview
-
-This project is a **real-time financial dashboard** designed to simulate a modern fintech system.
-
-It enables users to:
-
-* Track transactions in real time
-* Add dynamic metadata without schema changes
-* Detect anomalies and insights automatically
-* Maintain full audit history of changes
-* Operate securely in a multi-tenant environment
-
 ---
 
 ## 🧠 Key Highlights
