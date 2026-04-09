@@ -1,0 +1,13 @@
+# Web Framework and Server
+fastapi
+uvicorn[standard]
+websockets
+
+# Database and ORM
+sqlalchemy>=2.0.0
+asyncpg
+psycopg2-binary
+
+# Data Validation and Environment
+pydantic[email]
+python-dotenv
