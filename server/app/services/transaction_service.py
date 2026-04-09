@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from app.models.transaction import Transaction
 from app.utils.conflict import detect_conflict
 from app.services.event_manager import event_manager
-
+from app.models.audit_log import AuditLog
 import asyncio
 
 
@@ -36,31 +36,38 @@ def get_transactions(db: Session):
     return db.query(Transaction).all()
 
 
-# ✅ UPDATE TRANSACTION (WITH CONFLICT HANDLING)
-def update_transaction(db: Session, transaction_id, data):
+def update_transaction(db, transaction_id, data, user):
+
     transaction = db.query(Transaction).filter_by(id=transaction_id).first()
 
     if not transaction:
-        return None
+        raise Exception("Transaction not found")
 
-    # 🚨 Conflict Detection
-    if detect_conflict(data.updated_at, transaction.updated_at):
-        return {
-            "conflict": True,
-            "message": "This record was updated by another user"
-        }
+    changes = []
 
-    # ✅ Update fields dynamically
-    for key, value in data.dict(exclude_unset=True).items():
-        setattr(transaction, key, value)
+    # 🔹 Track changes
+    for field in ["amount", "payee"]:
+        old = getattr(transaction, field)
+        new = getattr(data, field, old)
+
+        if str(old) != str(new):
+            changes.append((field, old, new))
+            setattr(transaction, field, new)
 
     db.commit()
     db.refresh(transaction)
 
-    # 🔥 Broadcast update event
-    asyncio.create_task(event_manager.broadcast({
-        "type": "updated",
-        "id": str(transaction.id)
-    }))
+    # 🔹 Save audit logs
+    for field, old, new in changes:
+        log = AuditLog(
+            transaction_id=transaction.id,
+            user_id=user["user_id"],
+            field=field,
+            old_value=str(old),
+            new_value=str(new)
+        )
+        db.add(log)
+
+    db.commit()
 
     return transaction

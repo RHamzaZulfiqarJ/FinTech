@@ -11,3 +11,7 @@ psycopg2-binary
 # Data Validation and Environment
 pydantic[email]
 python-dotenv
+
+# Auth
+passlib[bcrypt]
+python-jose[cryptography]
