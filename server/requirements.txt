@@ -1,17 +1,8 @@
-# Web Framework and Server
 fastapi
-uvicorn[standard]
-websockets
-
-# Database and ORM
-sqlalchemy>=2.0.0
-asyncpg
+uvicorn
+sqlalchemy
 psycopg2-binary
-
-# Data Validation and Environment
-pydantic[email]
 python-dotenv
-
-# Auth
-passlib[bcrypt]
-python-jose[cryptography]
+python-jose
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1

@@ -81,6 +81,7 @@ export default function LoginPage() {
                   type="email"
                   required
                   placeholder="admin@fintech.io"
+                  value={email}
                   className="w-full bg-white/[0.02] border border-white/5 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 outline-none p-4 pl-12 rounded-2xl text-sm transition-all"
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -98,6 +99,7 @@ export default function LoginPage() {
                   type="password"
                   required
                   placeholder="••••••••"
+                  value={password}
                   className="w-full bg-white/[0.02] border border-white/5 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 outline-none p-4 pl-12 rounded-2xl text-sm transition-all"
                   onChange={(e) => setPassword(e.target.value)}
                 />
