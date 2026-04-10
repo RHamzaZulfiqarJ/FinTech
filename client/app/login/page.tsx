@@ -7,11 +7,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Lock, LogIn, Loader2, LayoutDashboard, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
-const API = "http://localhost:8000";
+const API = "https://fintech-52w9.onrender.com";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("user@example.com");
+  const [password, setPassword] = useState("string");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
@@ -80,7 +80,7 @@ export default function LoginPage() {
                 <input
                   type="email"
                   required
-                  defaultValue={"user@example.com"}
+                  placeholder="admin@fintech.io"
                   className="w-full bg-white/[0.02] border border-white/5 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 outline-none p-4 pl-12 rounded-2xl text-sm transition-all"
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -97,7 +97,7 @@ export default function LoginPage() {
                 <input
                   type="password"
                   required
-                  defaultValue={"string"}
+                  placeholder="••••••••"
                   className="w-full bg-white/[0.02] border border-white/5 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 outline-none p-4 pl-12 rounded-2xl text-sm transition-all"
                   onChange={(e) => setPassword(e.target.value)}
                 />

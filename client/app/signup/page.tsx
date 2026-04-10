@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Lock, ArrowRight, UserPlus, Loader2, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
 
-const API = "http://localhost:8000";
+const API = "https://fintech-52w9.onrender.com";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");

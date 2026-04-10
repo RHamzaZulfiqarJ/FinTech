@@ -83,7 +83,7 @@ export default function Dashboard() {
     fetchData();
     fetchAuxiliaryData();
 
-    const es = new EventSource("http://localhost:8000/stream");
+    const es = new EventSource("https://fintech-52w9.onrender.com/stream");
     es.onmessage = () => {
       fetchData(search);
       fetchAuxiliaryData();
